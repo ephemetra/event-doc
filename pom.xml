@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <groupId>com.jint</groupId>
     <artifactId>event-doc</artifactId>
     <version>${revision}</version>
 
@@ -18,6 +18,7 @@
         <module>event-doc-dependencies</module>
         <module>event-doc-annotation</module>
         <module>event-doc-processor</module>
+        <module>event-doc-sample</module>
     </modules>
 
     <dependencyManagement>
@@ -39,15 +40,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>com.google.auto.service</groupId>
-                            <artifactId>auto-service</artifactId>
-                            <version>1.1.1</version>
-                        </path>
-                    </annotationProcessorPaths>
                     <source>8</source>
                     <target>8</target>
+                    <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
             </plugin>
         </plugins>

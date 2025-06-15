@@ -1,7 +1,6 @@
 package com.eventdoc.processor;
 
 import com.eventdoc.annotation.EventDoc;
-import com.google.auto.service.AutoService;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -15,19 +14,19 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Set;
 
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 @SupportedAnnotationTypes("com.eventdoc.annotation.EventDoc")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class EventDocProcessor extends AbstractProcessor {
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
+        processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, "哈哈");
         super.init(processingEnv);
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        processingEnv.getMessager().printMessage(Diagnostic.Kind.ERROR, "开始了");
         // 遍历找到项目中所有的@EventDoc注解
         for (TypeElement annotation : annotations) {
             for (Element element : roundEnv.getElementsAnnotatedWith(annotation)) {
@@ -46,8 +45,8 @@ public class EventDocProcessor extends AbstractProcessor {
         // 写入文件
         FileObject file = null;
         try {
-             file = processingEnv.getFiler()
-                    .createResource(StandardLocation.CLASS_OUTPUT, "", "GeneratedDoc.txt");
+            file = processingEnv.getFiler()
+                    .createResource(StandardLocation.SOURCE_OUTPUT, "", "GeneratedDoc.txt");
             processingEnv.getMessager().printMessage(Diagnostic.Kind.WARNING, "生成文件路径: " + file.toUri());
             try (Writer writer = file.openWriter()) {
                 writer.write("test");

@@ -3,27 +3,20 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.jint</groupId>
         <artifactId>event-doc</artifactId>
         <version>${revision}</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>event-doc-processor</artifactId>
-    <packaging>jar</packaging>
+
+    <artifactId>event-doc-sample</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.jint</groupId>
-            <artifactId>event-doc-annotation</artifactId>
+            <artifactId>event-doc-processor</artifactId>
             <version>${revision}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.google.auto.service</groupId>-->
-<!--            <artifactId>auto-service</artifactId>-->
-<!--            <version>1.1.1</version>-->
-<!--        </dependency>-->
     </dependencies>
 
 </project>
